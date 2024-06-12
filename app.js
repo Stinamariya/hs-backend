@@ -40,8 +40,22 @@ app.post("/search",(req,res)=>{
     )
         
 })
+app.post("/delete",(req,res)=>{
+    let input=req.body
+    eventmodel.findByIdAndDelete(input._id).then(
+        (response)=>{
+            res.json({"status":"success"})
+            }
+    ).catch(
+        (error)=>{
+            res.json({status:"error"})
+        }
+    )
+    
+})
 
 
-app.listen(8081,()=>{
+
+app.listen(8080,()=>{
     console.log("server started")
 })
