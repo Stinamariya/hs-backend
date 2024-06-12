@@ -14,6 +14,18 @@ app.post("/add",(req,res)=>{
     event.save()
     res.json({status:"success"})
 })
+app.get("/view",(req,res)=>{
+    eventmodel.find().then(
+        (data)=>{
+            res.json(data)
+            
+        }
+    ).catch(
+        (error)=>{
+            res.json(error)
+        }
+    )
+})
 
 
 app.listen(8081,()=>{
